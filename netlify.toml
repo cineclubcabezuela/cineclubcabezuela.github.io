@@ -1,0 +1,10 @@
+# Configuración para Netlify: no hace falta tocar nada en su web.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Que los buscadores no la indexen (es para los socios).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

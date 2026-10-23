@@ -1,0 +1,616 @@
+/* =====================================================================
+   PÁGINAS · inicio, carné, el club y dudas
+   ===================================================================== */
+
+/* ---------- Cabecera de página (El club, Dudas) ---------- */
+.cabecera-pagina { padding-block: 48px 56px; }
+.cabecera-pagina .contenedor { display: grid; gap: 16px; }
+@media (min-width: 900px) {
+  .cabecera-pagina { padding-block: 80px; }
+}
+
+/* =====================================================================
+   INICIO · portada animada: sala a oscuras, se enciende la pantalla,
+   se sienta el público y aparece la marca.
+   ===================================================================== */
+:root { --marquesina-alto: 52px; }
+
+.portada {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - var(--barra-alto) - var(--marquesina-alto));
+  min-height: calc(100svh - var(--barra-alto) - var(--marquesina-alto) - env(safe-area-inset-bottom));
+  padding: 40px var(--margen);
+}
+.portada-contenido {
+  display: grid;
+  justify-items: start;
+  width: min(100%, 520px);
+}
+/* El logo se ajusta al alto de la pantalla para que todo quepa sin bajar */
+.portada-logo {
+  container-type: inline-size;
+  width: clamp(220px, calc((100svh - var(--barra-alto) - var(--marquesina-alto) - 340px) * 1.03), min(100%, 520px));
+}
+.sala { width: 87cqi; height: auto; }
+.portada-texto {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  width: 100%;
+  margin-top: 28px;
+}
+
+/* Marca: mismas proporciones que el logo del pptx */
+.portada-marca {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10.4cqi;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--crema);
+}
+.portada-cineclub {
+  font-family: var(--f-mono);
+  font-weight: 400;
+  font-size: 7.8cqi;
+  letter-spacing: 0.3em;
+  line-height: 1;
+}
+.portada-cineclub > span { display: inline-block; animation: letra 0.5s ease-out both; }
+.portada-cabezuela {
+  display: block;
+  margin-top: 4.6cqi;
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 23.1cqi;
+  line-height: 0.74;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  /* Recorta solo por debajo: la palabra sube como saliendo de la butaca */
+  clip-path: inset(-50% -5% 0 -5%);
+}
+.portada-cabezuela > span { display: inline-block; animation: sube-texto 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 1.75s both; }
+
+.portada-lema {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: clamp(0.8125rem, 3.4vw, 1rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--crema);
+}
+.portada-intro {
+  max-width: 28ch;
+  font-size: clamp(1.0625rem, 4.6vw, 1.375rem);
+  line-height: 1.35;
+  color: var(--gris-claro);
+}
+.portada-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  width: 100%;
+}
+.portada-botones .boton { flex: 1 1 auto; }
+
+.aparece { animation: aparece 0.7s ease-out both; }
+.portada-lema.aparece { animation-delay: 2.2s; }
+.portada-intro.aparece { animation-delay: 2.35s; }
+.portada-botones.aparece { animation-delay: 2.5s; }
+
+/* La sala */
+.sala-pantalla { animation: proyector 1.2s linear 0.35s both; }
+.sala-luz { opacity: 0.14; animation: barrido 8s ease-in-out 2.8s infinite; }
+.sala-cabeza {
+  transform-box: fill-box;
+  animation: cabeza-sube 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.2) both, cabeza-respira 6s ease-in-out infinite;
+}
+.sala-cabeza-1 { animation-delay: 1s, 3.4s; }
+.sala-cabeza-2 { animation-delay: 1.15s, 4.1s; }
+.sala-cabeza-3 { animation-delay: 1.3s, 3.8s; }
+
+@keyframes proyector {
+  0% { opacity: 0; }
+  8% { opacity: 0.85; }
+  12% { opacity: 0.1; }
+  26% { opacity: 0.9; }
+  30% { opacity: 0.35; }
+  48% { opacity: 1; }
+  54% { opacity: 0.7; }
+  64%, 100% { opacity: 1; }
+}
+@keyframes barrido {
+  0% { transform: translateX(0); }
+  40%, 100% { transform: translateX(1100px); }
+}
+@keyframes cabeza-sube {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+@keyframes cabeza-respira {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4%); }
+}
+@keyframes letra {
+  from { opacity: 0; transform: translateY(0.5em); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sube-texto {
+  from { transform: translateY(105%); }
+  to { transform: none; }
+}
+@keyframes aparece {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* La cinta de abajo */
+.marquesina {
+  display: flex;
+  align-items: center;
+  height: var(--marquesina-alto);
+  overflow: hidden;
+  background: var(--rojo);
+  color: var(--blanco);
+}
+.marquesina-pista {
+  display: flex;
+  width: max-content;
+  animation: marquesina 38s linear infinite;
+}
+.marquesina-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding-right: 22px;
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquesina-simbolo { width: 34px; height: auto; }
+@keyframes marquesina {
+  to { transform: translateX(-50%); }
+}
+
+@media (min-width: 900px) {
+  :root { --marquesina-alto: 64px; }
+  /* En PC: el logo a la izquierda y el texto a la derecha, abajo */
+  .portada-contenido {
+    width: min(100%, 1120px);
+    grid-template-columns: auto minmax(260px, 380px);
+    justify-content: center;
+    align-items: end;
+    column-gap: clamp(40px, 6vw, 96px);
+  }
+  .portada-logo { width: clamp(320px, calc((100svh - var(--barra-alto) - var(--marquesina-alto) - 120px) * 1.03), 600px); }
+  .portada-texto { margin-top: 0; gap: 16px; }
+  .portada-botones { flex-direction: column; align-items: stretch; }
+  .portada-botones .boton { flex: 0 0 auto; }
+  .marquesina-item { font-size: 2rem; gap: 28px; padding-right: 28px; }
+  .marquesina-simbolo { width: 44px; }
+}
+
+/* ---------- Pista del mes (pestaña Guía) ---------- */
+.pista {
+  display: grid;
+  gap: 14px;
+  max-width: 860px;
+  padding: 20px 20px 22px;
+  background: var(--crema-claro);
+  border: 2px solid var(--negro);
+}
+.pista-etiqueta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pista-etiqueta .icono { width: 18px; height: 18px; color: var(--negro); }
+.pista-interrogacion {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: start;
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 6.5rem;
+  line-height: 0.75;
+  color: var(--rojo);
+}
+.pista { grid-template-columns: 1fr auto; }
+.pista > :not(.pista-interrogacion) { grid-column: 1; }
+.pista > .pista-anteriores { grid-column: 1 / -1; }
+.pista-texto {
+  font-family: var(--f-titular);
+  font-weight: 800;
+  font-stretch: 80%;
+  font-size: clamp(1.625rem, 6.8vw, 2.5rem);
+  line-height: 1.08;
+  text-wrap: pretty;
+}
+.pista-anteriores { display: grid; }
+.pista-anteriores li {
+  padding: 10px 0;
+  border-top: 1.5px solid #d9cfbf;
+}
+.pista-anteriores .etiqueta { margin-right: 6px; }
+@media (min-width: 900px) {
+  .pista { padding: 32px 36px 32px; margin-inline: auto; }
+  .pista-interrogacion { font-size: 9rem; }
+}
+
+/* =====================================================================
+   CARNÉ
+   ===================================================================== */
+.carne-portada { padding-block: 40px 56px; }
+.carne-portada-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-areas: 'titulo' 'tarjeta' 'texto';
+}
+.carne-portada-titulo { grid-area: titulo; display: grid; gap: 12px; }
+.carne-portada-tarjeta { grid-area: tarjeta; }
+.carne-portada-texto { grid-area: texto; display: grid; justify-items: start; align-content: start; gap: 12px; }
+@media (min-width: 900px) {
+  .carne-portada { padding-block: 80px; }
+  .carne-portada-grid {
+    grid-template-columns: 1.15fr 1fr;
+    grid-template-areas: 'tarjeta titulo' 'tarjeta texto';
+    grid-template-rows: auto 1fr;
+    column-gap: 64px;
+    row-gap: 36px;
+  }
+  .carne-portada-tarjeta { align-self: center; }
+  .carne-portada-tarjeta .carne { max-width: 520px; }
+}
+
+/* ---------- El pasaporte, en grande ---------- */
+.pasaporte-seccion .destacado { color: var(--rojo); }
+.pasaporte-grande {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 18px 16px 16px;
+  background: var(--crema);
+  color: var(--negro);
+  border-radius: 16px;
+}
+.pasaporte-grande-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.pasaporte-grande-titulo {
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(1.5rem, 6.5vw, 2.25rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.pasaporte-grande-temporada,
+.pasaporte-grande-pie {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+.casillas-grandes {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px 8px;
+}
+.casillas-grandes .casilla { aspect-ratio: 1 / 1.1; }
+.casillas-grandes .casilla-mes { font-size: 0.75rem; }
+.pasaporte-racha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+.pasaporte-racha .icono { width: 28px; height: 28px; color: var(--rojo); }
+.pasaporte-pasos-titulo { margin: 44px 0 14px; }
+@media (min-width: 900px) {
+  .pasaporte-grande { padding: 28px; gap: 22px; }
+  .casillas-grandes { grid-template-columns: repeat(10, 1fr); gap: 12px; }
+  .casillas-grandes .casilla-mes { font-size: 0.875rem; }
+  .pasaporte-racha { font-size: 1.25rem; }
+}
+
+.carne-pie {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.carne-pie .icono { width: 18px; height: 18px; }
+
+/* ---------- Qué incluye ---------- */
+.incluye { display: grid; border-top: 2px solid var(--negro); }
+.incluye-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--negro);
+}
+.incluye-icono {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--rojo);
+  color: var(--crema);
+}
+.incluye-titulo {
+  font-weight: 800;
+  font-size: 1.1875rem;
+  line-height: 1.15;
+}
+.incluye-detalle {
+  margin-top: 4px;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--gris);
+}
+@media (min-width: 640px) {
+  .incluye { grid-template-columns: 1fr 1fr; column-gap: 32px; }
+}
+@media (min-width: 1000px) {
+  .incluye { grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 0; border-left: 2px solid var(--negro); }
+  .incluye-item {
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 14px;
+    padding: 22px 18px 24px;
+    border-top: 2px solid var(--negro);
+    border-right: 2px solid var(--negro);
+  }
+  .incluye-item:nth-child(n + 5) { border-top: 0; }
+}
+
+.letra-pequena { max-width: 760px; margin-top: 56px; }
+.letra-pequena-titulo { margin-bottom: 12px; }
+
+/* ---------- Cómo se paga y se sella ---------- */
+.pasos { display: grid; gap: 10px; }
+.paso {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 14px;
+  row-gap: 6px;
+  align-items: start;
+  padding: 18px 18px 18px 16px;
+  background: var(--crema);
+  color: var(--negro);
+}
+.paso-numero {
+  grid-row: 1 / span 2;
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 4.25rem;
+  line-height: 0.78;
+  color: var(--rojo);
+}
+.paso-icono { display: none; }
+.paso-texto { font-size: 1.1875rem; line-height: 1.3; font-weight: 500; }
+.paso-titulo { grid-column: 2; font-weight: 800; font-size: 1.25rem; line-height: 1.2; }
+.paso-nota { grid-column: 2; color: var(--gris); font-size: 0.9375rem; }
+.pasos-3 .paso-nota { font-size: 1.0625rem; }
+@media (min-width: 700px) {
+  .pasos:not(.pasos-3) { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1000px) {
+  .pasos { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .pasos.pasos-3 { grid-template-columns: repeat(3, 1fr); }
+  .pasos-3 .paso { min-height: 0; }
+  .paso-titulo { grid-column: auto; }
+  .paso {
+    grid-template-columns: 1fr;
+    align-content: start;
+    row-gap: 14px;
+    padding: 22px;
+    min-height: 260px;
+  }
+  .paso-numero { grid-row: auto; font-size: 6rem; }
+  .paso-nota { grid-column: auto; }
+  .paso-icono { display: block; position: absolute; top: 24px; right: 22px; width: 36px; height: 36px; }
+}
+
+.sin {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.sin li {
+  padding: 10px 14px;
+  border: 2px solid var(--crema);
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =====================================================================
+   EL CLUB
+   ===================================================================== */
+.confirmar { display: grid; gap: 10px; }
+.confirmar-paso {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: var(--crema-claro);
+  border: 2px solid var(--negro);
+  font-size: 1.0625rem;
+}
+.confirmar-icono {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--negro);
+  color: var(--crema);
+}
+@media (min-width: 900px) {
+  .confirmar { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .confirmar-paso { grid-template-columns: 1fr; align-content: start; padding: 22px; }
+}
+.aviso {
+  margin-top: 24px;
+  padding: 22px 20px 16px;
+  background: var(--rojo);
+  color: var(--blanco);
+  font-size: clamp(2.25rem, 10vw, 4.75rem);
+}
+
+/* ---------- Sesiones especiales ---------- */
+.especiales { display: grid; gap: 10px; }
+.especial {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px 18px 20px;
+  background: var(--crema);
+  color: var(--negro);
+}
+.especial h3 { color: var(--rojo); }
+.especial-idea {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+@media (min-width: 600px) {
+  .especiales { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1000px) {
+  .especiales { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .especial { min-height: 170px; }
+}
+
+/* =====================================================================
+   GUÍA DEL VISIONADO
+   ===================================================================== */
+.adivina-grid { display: grid; gap: 28px; }
+.premios { border-top: 2px solid var(--negro); }
+.premio {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--negro);
+}
+@media (min-width: 900px) {
+  .adivina-grid { grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+  .adivina-grid .pista { margin: 0; }
+}
+
+.guia-puntos { display: grid; gap: 10px; }
+.guia-punto {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1.5px solid #3a2f2c;
+}
+.guia-icono {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--rojo);
+  color: var(--blanco);
+}
+.guia-titulo { font-weight: 800; font-size: 1.1875rem; line-height: 1.2; }
+.guia-texto { margin-top: 4px; color: var(--gris-claro); line-height: 1.4; }
+@media (min-width: 800px) {
+  .guia-puntos { grid-template-columns: repeat(3, 1fr); column-gap: 28px; }
+  .guia-punto { grid-template-columns: 1fr; align-content: start; gap: 14px; border-bottom: 0; border-top: 1.5px solid #3a2f2c; padding-top: 22px; }
+}
+
+/* ---------- Invitados ---------- */
+.invitados-grid { display: grid; gap: 24px; }
+.invitados-grid .seccion-cabecera { margin-bottom: 0; }
+.invitados-precio { display: grid; gap: 8px; }
+.cifra-gigante {
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: clamp(6rem, 34vw, 11rem);
+  line-height: 0.8;
+}
+.invitados-puntos { border-top: 1.5px solid #3a2f2c; }
+.invitados-puntos li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1.5px solid #3a2f2c;
+  font-size: 1.125rem;
+}
+.invitados-puntos .icono { width: 20px; height: 20px; translate: 0 3px; }
+@media (min-width: 900px) {
+  .invitados-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    row-gap: 32px;
+  }
+  /* El precio grande a la derecha, ocupando las dos filas */
+  .invitados-precio { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+}
+
+/* ---------- Normas ---------- */
+.normas { border-top: 2px solid var(--negro); }
+.normas li {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--negro);
+}
+.normas-numero {
+  font-family: var(--f-titular);
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 3rem;
+  line-height: 0.8;
+  color: var(--rojo);
+}
+.normas p { font-size: 1.125rem; line-height: 1.35; }
+
+/* =====================================================================
+   DUDAS
+   ===================================================================== */
+.dudas-grid { display: grid; gap: 40px; }
+.dudas-grupo-titulo { margin-bottom: 12px; }
+@media (min-width: 900px) {
+  .dudas-grid { grid-template-columns: 1fr 1fr; gap: 56px 56px; align-items: start; }
+}

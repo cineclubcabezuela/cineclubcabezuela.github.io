@@ -1,0 +1,11 @@
+node_modules
+dist
+dev-dist
+*.log
+.DS_Store
+.claude/
+
+# Documentos de trabajo del club: el docx lleva notas internas que no se publican.
+referencia/
+# Borradores (vídeos, pruebas): no forman parte de la app.
+borradores/
