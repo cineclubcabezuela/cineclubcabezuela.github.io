@@ -102,7 +102,7 @@
 .portada-botones.aparece { animation-delay: 2.5s; }
 
 /* La sala */
-.sala-pantalla { animation: proyector 1.2s linear 0.35s both; }
+.sala-pantalla { animation: proyector 1.4s ease-in-out 0.35s both; }
 .sala-luz { opacity: 0.14; animation: barrido 8s ease-in-out 2.8s infinite; }
 .sala-cabeza {
   transform-box: fill-box;
@@ -112,15 +112,14 @@
 .sala-cabeza-2 { animation-delay: 1.15s, 4.1s; }
 .sala-cabeza-3 { animation-delay: 1.3s, 3.8s; }
 
+/* Se enciende como un proyector: un par de titubeos suaves, sin destellos */
 @keyframes proyector {
   0% { opacity: 0; }
-  8% { opacity: 0.85; }
-  12% { opacity: 0.1; }
-  26% { opacity: 0.9; }
-  30% { opacity: 0.35; }
-  48% { opacity: 1; }
-  54% { opacity: 0.7; }
-  64%, 100% { opacity: 1; }
+  18% { opacity: 0.7; }
+  30% { opacity: 0.4; }
+  55% { opacity: 1; }
+  68% { opacity: 0.85; }
+  80%, 100% { opacity: 1; }
 }
 @keyframes barrido {
   0% { transform: translateX(0); }

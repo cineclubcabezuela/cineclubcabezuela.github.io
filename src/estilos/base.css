@@ -342,7 +342,11 @@ main:focus { outline: none; }
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  /* La portada (y su cinta) se anima siempre, por decisión del club.
+     El resto de la app respeta el ajuste «reducir movimiento». */
+  *:not(.portada *, .marquesina *),
+  *:not(.portada *, .marquesina *)::before,
+  *:not(.portada *, .marquesina *)::after {
     animation-duration: 0.01ms !important;
     animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
