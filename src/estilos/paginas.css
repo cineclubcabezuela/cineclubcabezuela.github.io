@@ -256,6 +256,13 @@
 .carne-portada-titulo { grid-area: titulo; display: grid; gap: 12px; }
 .carne-portada-tarjeta { grid-area: tarjeta; }
 .carne-portada-texto { grid-area: texto; display: grid; justify-items: start; align-content: start; gap: 12px; }
+.carne-hacerse {
+  max-width: 38ch;
+  padding: 12px 14px;
+  border: 2px solid currentColor;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
 @media (min-width: 900px) {
   .carne-portada { padding-block: 80px; }
   .carne-portada-grid {

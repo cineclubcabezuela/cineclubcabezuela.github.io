@@ -44,7 +44,7 @@ export function CuandoEmpiezo() {
                 <li key={r.umbral}>
                   <Icono nombre="regalo" />
                   <span>
-                    <strong>{r.umbral} meses</strong> en {MESES[r.mes].largo}
+                    <strong>Regalo de {r.umbral} meses</strong> → en {MESES[r.mes].largo}
                   </span>
                 </li>
               ))}

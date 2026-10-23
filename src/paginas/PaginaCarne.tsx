@@ -1,4 +1,4 @@
-import { CARNE_INTRO, INCLUYE, LETRA_PEQUENA, PASAPORTE, PASOS, SIN } from '../contenido';
+import { CARNE_HACERSE, CARNE_INTRO, INCLUYE, LETRA_PEQUENA, PASAPORTE, PASOS, SIN } from '../contenido';
 import { Carne } from '../componentes/Carne';
 import { PasaporteGrande } from '../componentes/PasaporteGrande';
 import { CuandoEmpiezo } from '../componentes/CuandoEmpiezo';
@@ -34,8 +34,11 @@ export function PaginaCarne() {
           </div>
           <div className="carne-portada-texto">
             <p className="entradilla">{CARNE_INTRO}</p>
+            <p className="carne-hacerse">
+              <Texto>{CARNE_HACERSE}</Texto>
+            </p>
             <a className="enlace-flecha" href={enlace('carne', 'pasaporte')}>
-              Ver el pasaporte <Icono nombre="flecha" />
+              Cómo funciona el pasaporte <Icono nombre="flecha" />
             </a>
           </div>
         </div>
@@ -97,7 +100,7 @@ export function PaginaCarne() {
       <section className="seccion tema-negro" id="cuando-empiezo" aria-labelledby="cuando-titulo">
         <div className="contenedor">
           <Cabecera
-            etiqueta="Con la temporada empezada"
+            etiqueta="Si empiezas más tarde"
             titulo="¿Cuándo empiezo?"
             id="cuando-titulo"
             entradilla="Elige tu primer mes y mira hasta qué regalo puedes llegar."

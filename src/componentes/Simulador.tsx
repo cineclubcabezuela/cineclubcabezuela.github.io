@@ -89,7 +89,7 @@ export function Simulador() {
             <span className="marcador-unidad">{meses(a.rachaActual)} seguido{a.rachaActual === 1 ? '' : 's'}</span>
           </div>
           <div className="marcador-pagado">
-            <span className="etiqueta">Pagado</span>
+            <span className="etiqueta">Pagarías</span>
             <span className="marcador-numero marcador-numero-m">{pagado} €</span>
             <span className="marcador-unidad">
               {a.sellados} × {PRECIO_SOCIO} €
@@ -119,7 +119,7 @@ export function Simulador() {
           {a.sellados > 0 &&
             `Racha de ${a.rachaActual} ${meses(a.rachaActual)}. ${
               a.regalos.length ? `Regalos conseguidos: ${a.regalos.join(', ')}.` : 'Sin regalos todavía.'
-            } Pagado: ${pagado} euros. ${lineas.join(' ')}`}
+            } Pagarías ${pagado} euros. ${lineas.join(' ')}`}
         </p>
       </div>
     </div>

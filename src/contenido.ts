@@ -103,7 +103,7 @@ export const CARNE_EJEMPLO = {
 //  5. TEXTOS GENERALES
 // ---------------------------------------------------------------------
 export const LEMA = '1 vez al mes · 1 película';
-export const INTRO = 'En buena compañía, con charla y algo para picar.';
+export const INTRO = 'Nos juntamos a hablar de la peli del mes, en buena compañía y con algo para picar.';
 
 export const CLUB = {
   titular: 'Un club, no un cine',
@@ -111,6 +111,7 @@ export const CLUB = {
 
 // Frase de la cabecera de «Tu carné».
 export const CARNE_INTRO = 'Por delante, vuestro nombre. Por detrás, vuestro pasaporte de cine.';
+export const CARNE_HACERSE = '**Cómo hacerse socio:** en la puerta, el día de cualquier sesión. Mejor avisar antes.';
 
 
 // ---------------------------------------------------------------------
@@ -132,9 +133,9 @@ export const PASAPORTE = {
 //  icono: carne · euro · prioridad · canales · pasaporte · regalo ·
 //         estrella · lupa · sorpresa · guia
 export const INCLUYE = [
-  { icono: 'carne',     titulo: 'Para mayores de 16',         detalle: 'Personal y con tu nombre.' },
+  { icono: 'carne',     titulo: 'Personal y con tu nombre',   detalle: 'Para mayores de 16 años.' },
   { icono: 'euro',      titulo: 'Precio de socio',            detalle: `${PRECIO_SOCIO} € por sesión, en vez de ${PRECIO_INVITADO} €.` },
-  { icono: 'prioridad', titulo: 'Prioridad de plaza',         detalle: 'Los socios entran antes que los invitados.' },
+  { icono: 'prioridad', titulo: 'Prioridad de plaza',         detalle: 'Si se llena, los socios van primero.' },
   { icono: 'canales',   titulo: 'Canales del club',           detalle: 'Avisos, pistas y confirmación de asistencia.' },
   { icono: 'regalo',    titulo: 'Regalos sorpresa',           detalle: 'Por las rachas del pasaporte.' },
   { icono: 'estrella',  titulo: 'Sesiones especiales',        detalle: 'Los extras que vayamos organizando.' },
@@ -162,8 +163,8 @@ export const SIN = ['Sin cuota fija', 'Sin pagar por adelantado', 'Sin deudas'];
 // ---------------------------------------------------------------------
 export const LETRA_PEQUENA = [
   {
-    p: '¿Me hago socio el mismo día?',
-    r: 'Sí, al llegar (mejor avisar antes). **Tu racha empieza ese día** y el carné te llega en la sesión siguiente, ya sellado.',
+    p: '¿Cuándo me dan el carné?',
+    r: 'En la sesión siguiente a apuntarte, con la primera casilla ya sellada: **la racha cuenta desde el primer día**.',
   },
   {
     p: '¿Y si pierdo el carné?',
@@ -200,12 +201,12 @@ export const CONFIRMAR = {
 //  icono: lupa · sorpresa · guia · canales · club · ojo · estrella
 export const GUIA = {
   titular: 'Cada peli, con su guía',
-  entradilla: 'No hace falta saber de cine: la guía del visionado os lo pone fácil.',
+  entradilla: 'En cada sesión os damos una guía con información de la peli. Así no hace falta saber de cine.',
 
   // Cómo funciona, paso a paso.
   pasos: [
     { icono: 'lupa',    titulo: 'Los días previos', texto: 'Damos pistas sobre cuál será la peli.' },
-    { icono: 'guia',    titulo: 'En la sesión',     texto: 'Os damos la guía, con información de la peli.' },
+    { icono: 'guia',    titulo: 'En la sesión',     texto: 'Os damos la guía, para tenerla a mano.' },
     { icono: 'canales', titulo: 'Y charla',         texto: 'Con algo para picar.' },
   ],
 
@@ -274,18 +275,18 @@ export const NORMAS = [
 // ---------------------------------------------------------------------
 //  Cada grupo tiene un título y sus preguntas (p) con respuesta (r).
 //  Las de la letra pequeña del pasaporte se añaden solas (ver apartado 8).
-const [mismoDia, pierdoCarne, especialesCuentan, rachaSiguiente] = LETRA_PEQUENA;
+const [cuandoCarne, pierdoCarne, especialesCuentan, rachaSiguiente] = LETRA_PEQUENA;
 
 export const DUDAS = [
   {
     grupo: 'Carné y pago',
     preguntas: [
+      { p: '¿Cómo me hago socio?', r: 'En la puerta, el día de cualquier sesión (mejor avisar antes). Es para **mayores de 16 años** y lleva tu nombre.' },
       { p: '¿Cuánto cuesta ser socio?', r: `No hay cuota: pagas **${PRECIO_SOCIO} € cada mes que vienes**. Sin carné, ${PRECIO_INVITADO} €.` },
       { p: '¿Pago meses por adelantado?', r: 'No. Se paga en efectivo al entrar, **sesión a sesión**.' },
       { p: '¿Y si un mes no puedo ir?', r: '**No pagas ni debes nada**, pero la racha vuelve a cero.' },
       { p: '¿Llevo el dinero justo?', r: 'Mejor sí: **no siempre hay cambio**.' },
-      { p: '¿Quién puede ser socio?', r: 'Cualquiera **mayor de 16 años**. El carné es personal y lleva tu nombre.' },
-      mismoDia,
+      cuandoCarne,
       pierdoCarne,
     ],
   },
@@ -303,7 +304,8 @@ export const DUDAS = [
   {
     grupo: 'Sesiones',
     preguntas: [
-      { p: '¿Cómo confirmo que voy?', r: 'Por los **canales del club**, la semana de la sesión. Plazas por orden, primero socios, **hasta llenar**.' },
+      { p: '¿Cuándo y dónde son las sesiones?', r: 'Una vez al mes. **Fecha, hora y lugar** se avisan por los canales del club.' },
+      { p: '¿Cómo confirmo que voy?', r: 'Respondiendo al aviso de la semana de la sesión. Plazas por orden, primero socios, **hasta llenar**.' },
       { p: '¿Se sabe antes qué peli es?', r: 'No: los días previos solo damos **pistas**. Quien acierte sale mencionado en la guía y entra en el ranking.' },
       { p: '¿Qué es la guía del visionado?', r: 'Lo que os damos en cada sesión: **información de la peli** y los nombres de quienes acertaron las pistas.' },
       { p: '¿Hace falta saber de cine?', r: '**No.** Para eso está la guía, y en la charla vale cualquier opinión.' },
