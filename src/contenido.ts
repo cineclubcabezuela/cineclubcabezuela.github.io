@@ -136,11 +136,11 @@ export const INCLUYE = [
   { icono: 'carne',     titulo: 'Personal y con tu nombre',   detalle: 'Para mayores de 16 años.' },
   { icono: 'euro',      titulo: 'Precio de socio',            detalle: `${PRECIO_SOCIO} € por sesión, en vez de ${PRECIO_INVITADO} €.` },
   { icono: 'prioridad', titulo: 'Prioridad de plaza',         detalle: 'Si se llena, los socios van primero.' },
-  { icono: 'canales',   titulo: 'Canales del club',           detalle: 'Avisos, pistas y confirmación de asistencia.' },
+  { icono: 'canales',   titulo: 'Grupo de WhatsApp',          detalle: 'Avisos, pistas y confirmación de asistencia.' },
   { icono: 'regalo',    titulo: 'Regalos sorpresa',           detalle: 'Por las rachas del pasaporte.' },
   { icono: 'estrella',  titulo: 'Sesiones especiales',        detalle: 'Los extras que vayamos organizando.' },
   { icono: 'lupa',      titulo: '¿Adivináis la peli?',        detalle: 'Si acertáis, salís en la guía del visionado y entráis en el ranking.' },
-  { icono: 'sorpresa',  titulo: 'Sorpresas entre socios',     detalle: 'De vez en cuando se sortean detalles.' },
+  { icono: 'sorpresa',  titulo: 'Sorpresas del ranking',      detalle: 'Según el ranking de quienes aciertan la peli.' },
 ];
 
 
@@ -185,7 +185,7 @@ export const LETRA_PEQUENA = [
 //  9. CONFIRMAR ASISTENCIA  (sale en «El club»)
 // ---------------------------------------------------------------------
 export const CONFIRMAR = {
-  entradilla: 'Fecha, hora y lugar de cada sesión os los contamos por los canales del club.',
+  entradilla: 'Fecha, hora y lugar de cada sesión os los contamos por el grupo de WhatsApp del club.',
   pasos: [
     'La semana de la sesión os preguntamos **quién viene**.',
     'El local tiene un **aforo máximo**.',
@@ -295,6 +295,7 @@ export const DUDAS = [
     preguntas: [
       { p: '¿Cómo funciona la racha?', r: 'Cada vez que vienes se sella la casilla de ese mes. Solo cuentan los **meses seguidos**: si fallas uno, vuelta a empezar.' },
       { p: '¿Qué regalos hay?', r: '**Regalos sorpresa** a los **6, 8 y 10 meses seguidos**, y se suman: con 10, te llevas los tres.' },
+      { p: '¿Y las sorpresas del ranking?', r: 'Son aparte de los regalos de la racha: se dan **según el ranking** de quienes aciertan la peli.' },
       { p: '¿Pierdo un regalo si luego falto?', r: 'No. **Lo que ya has ganado es tuyo**; solo se reinicia la cuenta.' },
       { p: 'Si empiezo más tarde, ¿tengo regalo?', r: 'Empezando en **noviembre** llegas a 10; en **enero** o antes, a 8; en **marzo** o antes, a 6.' },
       especialesCuentan,
@@ -304,7 +305,7 @@ export const DUDAS = [
   {
     grupo: 'Sesiones',
     preguntas: [
-      { p: '¿Cuándo y dónde son las sesiones?', r: 'Una vez al mes. **Fecha, hora y lugar** se avisan por los canales del club.' },
+      { p: '¿Cuándo y dónde son las sesiones?', r: 'Una vez al mes. **Fecha, hora y lugar** se avisan por el grupo de WhatsApp del club.' },
       { p: '¿Cómo confirmo que voy?', r: 'Respondiendo al aviso de la semana de la sesión. Plazas por orden, primero socios, **hasta llenar**.' },
       { p: '¿Se sabe antes qué peli es?', r: 'No: los días previos solo damos **pistas**. Quien acierte sale mencionado en la guía y entra en el ranking.' },
       { p: '¿Qué es la guía del visionado?', r: 'Lo que os damos en cada sesión: **información de la peli** y los nombres de quienes acertaron las pistas.' },

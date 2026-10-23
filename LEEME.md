@@ -12,7 +12,7 @@ Web para los socios (y para quien se lo esté pensando): el carné, el pasaporte
 
 **Todo el texto está en un solo archivo: `src/contenido.ts`.** No hay que tocar nada más.
 
-La app no lleva fechas ni lugares de sesiones concretas, así que vale para toda la temporada sin tocar nada. Fecha, hora y lugar de cada sesión se cuentan por los canales del club.
+La app no lleva fechas ni lugares de sesiones concretas, así que vale para toda la temporada sin tocar nada. Fecha, hora y lugar de cada sesión se cuentan por el grupo de WhatsApp del club.
 
 **Los precios** están al principio del archivo (`PRECIO_SOCIO` y `PRECIO_INVITADO`). Si cambiáis uno, se actualiza solo en toda la app.
 
